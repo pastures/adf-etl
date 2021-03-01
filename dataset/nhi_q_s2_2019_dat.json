@@ -1,0 +1,29 @@
+{
+	"name": "nhi_q_s2_2019_dat",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageTestrun",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "R2019_NHI_Q_S2.dat",
+				"folderPath": "NZ_TV_RATINGS",
+				"container": "migration"
+			},
+			"columnDelimiter": "Ã",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

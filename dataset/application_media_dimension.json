@@ -1,0 +1,24 @@
+{
+	"name": "application_media_dimension",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageTestrun",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "application_media_dimension.dat",
+				"container": "testrun"
+			},
+			"columnDelimiter": "Ç",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,69 @@
+{
+	"name": "adexavail",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageTestrun",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "video_creative.dat",
+				"container": "testrun"
+			},
+			"columnDelimiter": "¬",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ENT_CREATIVE_ID",
+				"type": "String"
+			},
+			{
+				"name": "VIDEO_CREATIVE_ID",
+				"type": "String"
+			},
+			{
+				"name": "SUBMEDIA_ID",
+				"type": "String"
+			},
+			{
+				"name": "OPRODUCT_ID",
+				"type": "String"
+			},
+			{
+				"name": "LENGTH_V",
+				"type": "String"
+			},
+			{
+				"name": "ACTUAL_LENGTH_V",
+				"type": "String"
+			},
+			{
+				"name": "VIDEO_CREATIVE_S",
+				"type": "String"
+			},
+			{
+				"name": "TARGET_URL_S",
+				"type": "String"
+			},
+			{
+				"name": "START_WEBSITE_ID",
+				"type": "String"
+			},
+			{
+				"name": "FIRSTSEEN_D",
+				"type": "String"
+			},
+			{
+				"name": "CLASSIFICATIONTYPE_ID",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

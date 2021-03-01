@@ -1,0 +1,108 @@
+{
+	"name": "searchdisplayurl",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 1000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "SEARCHDISPLAYURL_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "searchdisplayurl_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "SEARCHDISPLAYURL_S",
+									"type": "String"
+								},
+								"sink": {
+									"name": "searchdisplayurl_s",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OPRODUCT_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "oproduct_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "START_D",
+									"type": "String"
+								},
+								"sink": {
+									"name": "start_d",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATIVE_F",
+									"type": "String"
+								},
+								"sink": {
+									"name": "creative_f",
+									"type": "Int16"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "searchengine",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "pg_searchengine",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-04-29T15:31:48Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

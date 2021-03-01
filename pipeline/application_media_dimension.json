@@ -1,0 +1,199 @@
+{
+	"name": "application_media_dimension",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": false,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 10000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "application_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "application_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "osubmedia_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "osubmedia_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "submedia_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "submedia_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "media_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "media_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "media_nptvbreakout_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "media_nptvbreakout_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "media_npbreakout_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "media_npbreakout_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "media_tvbreakout_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "media_tvbreakout_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "media_n",
+									"type": "String"
+								},
+								"sink": {
+									"name": "media_n",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "media_a",
+									"type": "String"
+								},
+								"sink": {
+									"name": "media_a",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "medtype_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "medtype_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "natloc_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "natloc_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "language_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "language_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "order_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "order_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "active_f",
+									"type": "String"
+								},
+								"sink": {
+									"name": "active_f",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "application_media_dimension",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "pg_application_media_dimension",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-04-29T08:57:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

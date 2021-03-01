@@ -1,0 +1,17 @@
+{
+	"name": "pg_brddate_calendar",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "brddate_calendar"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

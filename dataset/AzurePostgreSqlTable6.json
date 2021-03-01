@@ -1,0 +1,17 @@
+{
+	"name": "AzurePostgreSqlTable6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "citustimeout",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "r2016_nsi_q"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

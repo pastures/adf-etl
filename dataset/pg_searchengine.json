@@ -1,0 +1,17 @@
+{
+	"name": "pg_searchengine",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "searchdisplayurl"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

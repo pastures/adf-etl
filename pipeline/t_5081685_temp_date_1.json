@@ -1,0 +1,128 @@
+{
+	"name": "t_5081685_temp_date_1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 10000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Q_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "q_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDER_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "order_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ENTMAJ_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "entmaj_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ENTMIN_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "entmin_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "START_D",
+									"type": "String"
+								},
+								"sink": {
+									"name": "start_d",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "END_D",
+									"type": "String"
+								},
+								"sink": {
+									"name": "end_d",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "OPTMASK_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "optmask_id",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "t_5081685_temp_date_1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "pg_t_5081685_temp_date_1",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-04-29T14:29:53Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

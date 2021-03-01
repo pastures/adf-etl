@@ -1,0 +1,25 @@
+{
+	"name": "d201803_web_dat",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageTestrun",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "D201803_WEB_NPLUS.dat",
+				"folderPath": "NZ_OCCURRENCE",
+				"container": "migration"
+			},
+			"columnDelimiter": "Ã",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

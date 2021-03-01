@@ -1,0 +1,158 @@
+{
+	"name": "adexavail",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 1000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "APPLICATION_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "application_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "SUBMEDIA_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "submedia_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MARKET_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "market_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ADEXSTATE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "adexstate_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ADEXLEVEL_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "adexlevel_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MEASURESTATE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "measurestate_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "START_D",
+									"type": "String"
+								},
+								"sink": {
+									"name": "start_d",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "END_D",
+									"type": "String"
+								},
+								"sink": {
+									"name": "end_d",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "STARTDAY_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "startday_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ENDDAY_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "endday_id",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "adexavail",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "pg_adexavail",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-08-04T14:56:32Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

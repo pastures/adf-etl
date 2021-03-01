@@ -1,0 +1,17 @@
+{
+	"name": "pg_cablemkt_pop",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "cablemkt_pop"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

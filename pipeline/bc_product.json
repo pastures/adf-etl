@@ -1,0 +1,328 @@
+{
+	"name": "bc_product",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 1000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "PRODUCT_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "product_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_NAME_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "product_name_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_TYPE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "product_type_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_DESCRIPTOR_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "product_descriptor_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_NAME_N",
+									"type": "String"
+								},
+								"sink": {
+									"name": "product_name_n",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_TYPE_N",
+									"type": "String"
+								},
+								"sink": {
+									"name": "product_type_n",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_DESCRIPTOR_N",
+									"type": "String"
+								},
+								"sink": {
+									"name": "product_descriptor_n",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ULTIMATEOWNER_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ultimateowner_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PARENT_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "parent_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "SUBSID_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "subsid_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ADVERTISER_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "advertiser_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "BRAND_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "brand_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CATEGORY_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "category_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "SUBCATEGORY_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "subcategory_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MICROCATEGORY_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "microcategory_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MICROCATEGORY_C",
+									"type": "String"
+								},
+								"sink": {
+									"name": "microcategory_c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "APPEAR_D",
+									"type": "String"
+								},
+								"sink": {
+									"name": "appear_d",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "RANK_F",
+									"type": "String"
+								},
+								"sink": {
+									"name": "rank_f",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "SALESINDICATOR_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "salesindicator_id",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERNET_F",
+									"type": "String"
+								},
+								"sink": {
+									"name": "internet_f",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "NEW_F",
+									"type": "String"
+								},
+								"sink": {
+									"name": "new_f",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATE_D",
+									"type": "String"
+								},
+								"sink": {
+									"name": "create_d",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "MODIFY_D",
+									"type": "String"
+								},
+								"sink": {
+									"name": "modify_d",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "LEGACY_ACCOUNT_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "legacy_account_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARY_PRODUCT_F",
+									"type": "String"
+								},
+								"sink": {
+									"name": "primary_product_f",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "LEGACY_CATEGORY_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "legacy_category_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CLASS_ORDER_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "class_order_id",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "bc_product",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "pg_bc_product",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-04-29T13:38:46Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

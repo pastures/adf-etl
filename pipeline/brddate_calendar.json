@@ -1,0 +1,328 @@
+{
+	"name": "brddate_calendar",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 1000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "BRDDATE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "brddate_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "BWEEK_FIRSTDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bweek_firstday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "BMONTH_FIRSTDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bmonth_firstday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "BQUARTER_FIRSTDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bquarter_firstday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "BHALF_FIRSTDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bhalf_firstday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "BYEAR_FIRSTDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "byear_firstday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CWEEK_FIRSTDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cweek_firstday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CMONTH_FIRSTDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cmonth_firstday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CQUARTER_FIRSTDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cquarter_firstday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CHALF_FIRSTDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "chalf_firstday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CYEAR_FIRSTDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cyear_firstday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DAYDATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "daydate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CAMPAIGN_FIRSTDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "campaign_firstday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "POP_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "pop_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "WEEKNUM_V",
+									"type": "String"
+								},
+								"sink": {
+									"name": "weeknum_v",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "BWEEK_INT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bweek_int",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "BYEAR_INT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "byear_int",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CYEAR_INT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cyear_int",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "BMONTH_INT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bmonth_int",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CMONTH_INT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cmonth_int",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DOW_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dow_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DAY_OF_WEEK",
+									"type": "String"
+								},
+								"sink": {
+									"name": "day_of_week",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NEXTBWEEK_FIRSTDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "nextbweek_firstday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "WEEKDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "weekday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CMONTH_DISTINCT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cmonth_distinct",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CQUARTER_DISTINCT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cquarter_distinct",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "WEEKPART_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "weekpart_id",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "brddate_calendar",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "pg_brddate_calendar",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-05-07T11:21:56Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "NHSI_Q_2016_pg",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "r2016_nhsi_q"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

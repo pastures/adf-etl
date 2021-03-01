@@ -1,0 +1,32 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "website",
+						"type": "DatasetReference"
+					},
+					"name": "website"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "transformedwebsite",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "websiteparentid"
+				}
+			],
+			"script": "source(output(\n\t\tWEBSITE_ID as string,\n\t\tWEBSITE_N as string,\n\t\tWEBSITE_A as string,\n\t\tSUBMEDIA_ID as string,\n\t\tMARKET_ID as string,\n\t\tLANGUAGE_ID as string,\n\t\tWEBSITE_CAT_ID as string,\n\t\tURL_S as string,\n\t\tWEBSITE_PARENT_ID as string,\n\t\tACTIVE_F as string,\n\t\tSTART_D as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> website\nwebsite derive(WEBSITE_PARENT_ID = coalesce(WEBSITE_PARENT_ID,'0')) ~> websiteparentid\nwebsiteparentid sink(input(\n\t\tPRODUCT_DESCRIPTOR_ID as string,\n\t\tPRODUCT_DESCRIPTOR_N as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['transformed-website.dat'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

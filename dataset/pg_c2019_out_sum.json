@@ -1,0 +1,17 @@
+{
+	"name": "pg_c2019_out_sum",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "c2019_out_sum"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

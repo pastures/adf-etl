@@ -1,0 +1,88 @@
+{
+	"name": "grupmap",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 10000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "BCKTMAJ_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bcktmaj_id",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "TREATASMAJ_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "treatasmaj_id",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTENTMAJ_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "contentmaj_id",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "grupmap",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "pg_grupmap",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-04-30T09:28:16Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

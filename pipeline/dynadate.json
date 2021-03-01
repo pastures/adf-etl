@@ -1,0 +1,148 @@
+{
+	"name": "dynadate",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 10000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "DYNADATE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dynadate_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DYNADATE_N",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dynadate_n",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DYNADATE_S",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dynadate_s",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDER_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "order_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ACTIVE_F",
+									"type": "String"
+								},
+								"sink": {
+									"name": "active_f",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ADEXLEVEL_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "adexlevel_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "FLOWCHART_F",
+									"type": "String"
+								},
+								"sink": {
+									"name": "flowchart_f",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNT_V",
+									"type": "String"
+								},
+								"sink": {
+									"name": "count_v",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ENTMAJ_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "entmaj_id",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "dynadate",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "pg_dynadate",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-04-30T09:28:12Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

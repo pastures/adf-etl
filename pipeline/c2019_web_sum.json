@@ -1,0 +1,238 @@
+{
+	"name": "c2019_web_sum",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 1000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "SUBMEDIA_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "submedia_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MARKET_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "market_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "OACCOUNT_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "oaccount_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "OPRODUCT_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "oproduct_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "OWEBSITE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "owebsite_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "HOUSEADTYPE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "houseadtype_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "WEEKPART_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "weekpart_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "WEBADNETWORK_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "webadnetwork_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "OCOST_TOT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ocost_tot",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "COST_TOT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cost_tot",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "OIMPRESSION_TOT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "oimpression_tot",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPRESSION_TOT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "impression_tot",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ADACTIVITY_TOT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "adactivity_tot",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CM_START_D",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cm_start_d",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CYEAR_INT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cyear_int",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CMONTH_INT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cmonth_int",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_TOT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "units_tot",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "BRDDATE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "brddate_id",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "c2018_web_sum",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "pg_c2018_web_sum",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-04-30T15:08:37Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

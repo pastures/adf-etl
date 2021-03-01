@@ -1,0 +1,17 @@
+{
+	"name": "pg_t_datejoin",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "t_5081685_datejoin_1"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "pg_market",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "market"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,138 @@
+{
+	"name": "media",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 10000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "MEDIA_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "media_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MEDIA_N",
+									"type": "String"
+								},
+								"sink": {
+									"name": "media_n",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MEDIA_A",
+									"type": "String"
+								},
+								"sink": {
+									"name": "media_a",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NATLOC_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "natloc_id",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "MEDTYPE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "medtype_id",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDER_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "order_id",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "LANGUAGE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "language_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "BE_F",
+									"type": "String"
+								},
+								"sink": {
+									"name": "be_f",
+									"type": "Int16"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "media",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "pg_media",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-04-30T09:28:11Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

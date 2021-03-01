@@ -1,0 +1,375 @@
+{
+	"name": "d201404_ltv_nplus",
+	"properties": {
+		"activities": [
+			{
+				"name": "d201404_ltv_nplus",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 10000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "OCCURRENCE_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "occurrence_id",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "S2DATE_D",
+									"type": "DateTime",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "s2date_d",
+									"type": "DateTime",
+									"physicalType": "timestamp"
+								}
+							},
+							{
+								"source": {
+									"name": "BROADCASTER_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "broadcaster_id",
+									"type": "Int16",
+									"physicalType": "smallint"
+								}
+							},
+							{
+								"source": {
+									"name": "BRDDATE_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "brddate_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "BRDTIME_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "brdtime_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "DOW_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "dow_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "WEEKPART_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "weekpart_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "MARKET_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "market_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "QTRHRKEY_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "qtrhrkey_id",
+									"type": "Int16",
+									"physicalType": "smallint"
+								}
+							},
+							{
+								"source": {
+									"name": "SUBMEDIA_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "submedia_id",
+									"type": "Int16",
+									"physicalType": "smallint"
+								}
+							},
+							{
+								"source": {
+									"name": "DAYPART_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "daypart_id",
+									"type": "Int16",
+									"physicalType": "smallint"
+								}
+							},
+							{
+								"source": {
+									"name": "OAFF_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "oaff_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "OPROG_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "oprog_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "PODNUMBER_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "podnumber_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "PODPOSITION_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "podposition_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "PODSIZE_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "podsize_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "PODPLACEMENT_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "podplacement_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "PODBREAK_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "podbreak_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "COST_FINAL",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "cost_final",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_V",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "units_v",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "OCOST_V",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ocost_v",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "COST_V",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "cost_v",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "COSTSTATE_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "coststate_id",
+									"type": "Int16",
+									"physicalType": "smallint"
+								}
+							},
+							{
+								"source": {
+									"name": "LENGTH_V",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "length_v",
+									"type": "Int16",
+									"physicalType": "smallint"
+								}
+							},
+							{
+								"source": {
+									"name": "COMM_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "comm_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "OPRODUCT_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "oproduct_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "D201404_LTV_NPLUS_DAT",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d201404_ltv_nplus_pg",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-08-13T14:52:38Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

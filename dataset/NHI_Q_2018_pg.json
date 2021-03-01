@@ -1,0 +1,17 @@
+{
+	"name": "NHI_Q_2018_pg",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "r2018_nhi_q"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

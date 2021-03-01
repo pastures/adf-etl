@@ -1,0 +1,70 @@
+{
+	"name": "website",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageTestrun",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "website.dat",
+				"folderPath": "NZ_MASTER_REFERENCE_DATA",
+				"container": "migration"
+			},
+			"columnDelimiter": "¬",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "WEBSITE_ID",
+				"type": "String"
+			},
+			{
+				"name": "WEBSITE_N",
+				"type": "String"
+			},
+			{
+				"name": "WEBSITE_A",
+				"type": "String"
+			},
+			{
+				"name": "SUBMEDIA_ID",
+				"type": "String"
+			},
+			{
+				"name": "MARKET_ID",
+				"type": "String"
+			},
+			{
+				"name": "LANGUAGE_ID",
+				"type": "String"
+			},
+			{
+				"name": "WEBSITE_CAT_ID",
+				"type": "String"
+			},
+			{
+				"name": "URL_S",
+				"type": "String"
+			},
+			{
+				"name": "WEBSITE_PARENT_ID",
+				"type": "String"
+			},
+			{
+				"name": "ACTIVE_F",
+				"type": "String"
+			},
+			{
+				"name": "START_D",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

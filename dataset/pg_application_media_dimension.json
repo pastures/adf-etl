@@ -1,0 +1,17 @@
+{
+	"name": "pg_application_media_dimension",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "application_media_dimension"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

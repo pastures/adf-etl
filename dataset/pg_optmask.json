@@ -1,0 +1,17 @@
+{
+	"name": "pg_optmask",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "optmask"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

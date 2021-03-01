@@ -1,0 +1,17 @@
+{
+	"name": "pg_d201402_ltv_nplus",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "d201402_ltv_nplus"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

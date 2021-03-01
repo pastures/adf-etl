@@ -1,0 +1,138 @@
+{
+	"name": "t_5081685_tgs_1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 10000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Q_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "q_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "GRUPSET_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "grupset_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "GRUPMAJ_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "grupmaj_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "GRUPSET_N",
+									"type": "String"
+								},
+								"sink": {
+									"name": "grupset_n",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GRUPSET_A",
+									"type": "String"
+								},
+								"sink": {
+									"name": "grupset_a",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GRUPSET_C",
+									"type": "String"
+								},
+								"sink": {
+									"name": "grupset_c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GROUPTYPE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "grouptype_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "USRCOLOR_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "usrcolor_id",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "t_5081685_tgs_1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "pg_t_5081685_tgs_1",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-04-29T14:29:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "pg_adexavail",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "adexavail"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

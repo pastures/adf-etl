@@ -1,0 +1,17 @@
+{
+	"name": "pg_bc_product",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "bc_product"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

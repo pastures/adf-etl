@@ -1,0 +1,17 @@
+{
+	"name": "pg_grupmap",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "grupmap"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "pg_submedia",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "submedia"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

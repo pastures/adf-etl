@@ -1,0 +1,246 @@
+{
+	"name": "c2019-cin-sum",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_kvo",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "testrun//C2018_CIN_SUM.dat"
+					},
+					{
+						"name": "Destination",
+						"value": "public.c2018_cin_sum"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": "0"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 1000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"redirectIncompatibleRowSettings": {
+						"linkedServiceName": {
+							"referenceName": "AzureBlobStorageTestrun",
+							"type": "LinkedServiceReference"
+						},
+						"path": "testrun"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CM_START_D",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cm_start_d",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "contract_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "SUBMEDIA_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "submedia_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MARKET_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "market_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CINEMA_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cinema_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CINEMA_CREATIVE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cinema_creative_id",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "OPRODUCT_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "oproduct_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CYEAR_MONTH",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cyear_month",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "BRDDATE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "brddate_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "WEEKPART_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "weekpart_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "LENGTH_V",
+									"type": "String"
+								},
+								"sink": {
+									"name": "length_v",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MPAA_N",
+									"type": "String"
+								},
+								"sink": {
+									"name": "mpaa_n",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DISPLAYTYPE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "displaytype_id",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPRESSION_TOT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "impression_tot",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_TOT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "units_tot",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "OCOST_TOT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ocost_tot",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "COST_TOT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cost_tot",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "c2019_cin_sum",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "pg_c2019_cin_sum",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-04-30T13:07:12Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

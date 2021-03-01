@@ -1,0 +1,17 @@
+{
+	"name": "websum_pg",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "b2019_web_sum"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

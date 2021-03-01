@@ -1,0 +1,105 @@
+{
+	"name": "c2019_b2b_sum",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageTestrun",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "C2019_B2B_SUM.dat",
+				"container": "testrun"
+			},
+			"columnDelimiter": "Ã",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "CM_START_D",
+				"type": "String"
+			},
+			{
+				"name": "SUBMEDIA_ID",
+				"type": "String"
+			},
+			{
+				"name": "MARKET_ID",
+				"type": "String"
+			},
+			{
+				"name": "OACCOUNT_ID",
+				"type": "String"
+			},
+			{
+				"name": "OLACCOUNT_ID",
+				"type": "String"
+			},
+			{
+				"name": "CYEAR_INT",
+				"type": "String"
+			},
+			{
+				"name": "CMONTH_INT",
+				"type": "String"
+			},
+			{
+				"name": "PUB_ID",
+				"type": "String"
+			},
+			{
+				"name": "EDIPUBTYPE_ID",
+				"type": "String"
+			},
+			{
+				"name": "WEEKPART_ID",
+				"type": "String"
+			},
+			{
+				"name": "PUBSECTIONTYPE_ID",
+				"type": "String"
+			},
+			{
+				"name": "BRDDATE_ID",
+				"type": "String"
+			},
+			{
+				"name": "MMT_TYPE_ID",
+				"type": "String"
+			},
+			{
+				"name": "UNITS_TOT",
+				"type": "String"
+			},
+			{
+				"name": "EQU_TOT",
+				"type": "String"
+			},
+			{
+				"name": "LINAGE_TOT",
+				"type": "String"
+			},
+			{
+				"name": "COLINCH_TOT",
+				"type": "String"
+			},
+			{
+				"name": "SIZE_TOT",
+				"type": "String"
+			},
+			{
+				"name": "COST_TOT",
+				"type": "String"
+			},
+			{
+				"name": "OPRODUCT_ID",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

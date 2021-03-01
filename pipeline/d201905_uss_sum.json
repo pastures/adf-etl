@@ -1,0 +1,245 @@
+{
+	"name": "d201905_uss_sum",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 10000,
+						"writeBatchTimeout": "00:01:30"
+					},
+					"enableStaging": false,
+					"parallelCopies": 20,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "OCC_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "occ_id",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "S2DATE_D",
+									"type": "DateTime",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "s2date_d",
+									"type": "DateTime",
+									"physicalType": "timestamp"
+								}
+							},
+							{
+								"source": {
+									"name": "BRDDATE_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "brddate_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "DOW_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "dow_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "WEEKPART_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "weekpart_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "MARKET_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "market_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "SUBMEDIA_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "submedia_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "SEARCHCREATIVE_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "searchcreative_id",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "OPRODUCT_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "oproduct_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "SEARCHENGINE_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "searchengine_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "SEARCHDISPLAYURL_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "searchdisplayurl_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "SEARCHKEYWORD_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "searchkeyword_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "PAGE_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "page_id",
+									"type": "Decimal",
+									"physicalType": "numeric"
+								}
+							},
+							{
+								"source": {
+									"name": "ADBLOCK_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "adblock_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "ADBLOCK_POSITION_V",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "adblock_position_v",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d201905_uss_dat",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d201905_uss_pg",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"concurrency": 20,
+		"annotations": [],
+		"lastPublishTime": "2020-08-28T15:22:28Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

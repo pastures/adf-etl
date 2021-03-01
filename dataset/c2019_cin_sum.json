@@ -1,0 +1,93 @@
+{
+	"name": "c2019_cin_sum",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageTestrun",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "C2019_CIN_SUM.dat",
+				"container": "testrun"
+			},
+			"columnDelimiter": "Ã",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "CM_START_D",
+				"type": "String"
+			},
+			{
+				"name": "CONTRACT_ID",
+				"type": "String"
+			},
+			{
+				"name": "SUBMEDIA_ID",
+				"type": "String"
+			},
+			{
+				"name": "MARKET_ID",
+				"type": "String"
+			},
+			{
+				"name": "CINEMA_ID",
+				"type": "String"
+			},
+			{
+				"name": "CINEMA_CREATIVE_ID",
+				"type": "String"
+			},
+			{
+				"name": "OPRODUCT_ID",
+				"type": "String"
+			},
+			{
+				"name": "CYEAR_MONTH",
+				"type": "String"
+			},
+			{
+				"name": "BRDDATE_ID",
+				"type": "String"
+			},
+			{
+				"name": "WEEKPART_ID",
+				"type": "String"
+			},
+			{
+				"name": "LENGTH_V",
+				"type": "String"
+			},
+			{
+				"name": "MPAA_N",
+				"type": "String"
+			},
+			{
+				"name": "DISPLAYTYPE_ID",
+				"type": "String"
+			},
+			{
+				"name": "IMPRESSION_TOT",
+				"type": "String"
+			},
+			{
+				"name": "UNITS_TOT",
+				"type": "String"
+			},
+			{
+				"name": "OCOST_TOT",
+				"type": "String"
+			},
+			{
+				"name": "COST_TOT",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

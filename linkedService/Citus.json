@@ -1,0 +1,12 @@
+{
+	"name": "Citus",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzurePostgreSql",
+		"typeProperties": {
+			"connectionString": "host=cdbenchmark-c.postgres.database.azure.com;port=5432;database=citus;uid=citus;encryptionmethod=6;validateservercertificate=0",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFMT0FESU5HQ0lUVVNfYzZjZTc2ZjAtMDc3My00ZDVkLTk1NTgtNjBmYjU1OWUzYWViIg0KfQ=="
+		}
+	}
+}

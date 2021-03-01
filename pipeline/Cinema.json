@@ -1,0 +1,267 @@
+{
+	"name": "Cinema",
+	"properties": {
+		"activities": [
+			{
+				"name": "CinemaOcc",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 10000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "S2DATE_D",
+									"type": "DateTime",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "s2date_d",
+									"type": "DateTime",
+									"physicalType": "timestamp"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "contract_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "SUBMEDIA_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "submedia_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "MARKET_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "market_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "CINEMA_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "cinema_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "CINEMA_CREATIVE_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "cinema_creative_id",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "ENT_CREATIVE_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ent_creative_id",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "CINEMA_DISPLAYTYPE_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "cinema_displaytype_id",
+									"type": "Int16",
+									"physicalType": "smallint"
+								}
+							},
+							{
+								"source": {
+									"name": "OPRODUCT_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "oproduct_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "BRDDATE_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "brddate_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "DOW_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "dow_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "WEEKPART_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "weekpart_id",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "LENGTH_V",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "length_v",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "MPAA_N",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "mpaa_n",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPRESSION_V",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "impression_v",
+									"type": "Decimal",
+									"physicalType": "numeric"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_V",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "units_v",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "COST_V",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "cost_v",
+									"type": "Decimal",
+									"physicalType": "numeric"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "CinDetailDat",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "PGCinemaDetail",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-08-07T11:32:46Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

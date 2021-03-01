@@ -1,0 +1,17 @@
+{
+	"name": "pg_media_tvrollup",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "media_tvrollup"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

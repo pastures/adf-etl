@@ -1,0 +1,6 @@
+{
+	"name": "audience-sftp-ir",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

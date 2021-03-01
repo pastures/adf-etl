@@ -1,0 +1,17 @@
+{
+	"name": "NHSIQ_Q_2019_pg",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "r2019_nhsi_q"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

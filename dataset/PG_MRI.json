@@ -1,0 +1,17 @@
+{
+	"name": "PG_MRI",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "r2018spring_mri_i"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

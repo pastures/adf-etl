@@ -1,0 +1,17 @@
+{
+	"name": "AzurePostgreSqlTable3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "d201905_vid_nplus"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

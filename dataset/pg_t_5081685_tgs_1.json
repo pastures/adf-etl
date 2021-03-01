@@ -1,0 +1,17 @@
+{
+	"name": "pg_t_5081685_tgs_1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Citus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "t_5081685_tgs_1"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
