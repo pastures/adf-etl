@@ -1,0 +1,42 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "IngestionTarget",
+						"type": "DatasetReference"
+					},
+					"name": "salesorders"
+				},
+				{
+					"dataset": {
+						"referenceName": "IngestionTarget",
+						"type": "DatasetReference"
+					},
+					"name": "orderdetails"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "transformedparquet",
+						"type": "DatasetReference"
+					},
+					"name": "salesparquet"
+				}
+			],
+			"transformations": [
+				{
+					"name": "mergeOrderandOrderDetails"
+				},
+				{
+					"name": "generateGlobalOrderID"
+				}
+			],
+			"script": "source(output(\n\t\tOrderID as string,\n\t\tCustomerID as string,\n\t\tOrderDate as date,\n\t\tShipDate as date,\n\t\tTotalCost as decimal(10,0),\n\t\tCreatedDate as date,\n\t\tUpdatedDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['Southridge/CloudSales/Orders/Orders.csv']) ~> salesorders\nsource(output(\n\t\tOrderDetailID as string,\n\t\tOrderID as string,\n\t\tMovieID as string,\n\t\tQuantity as integer,\n\t\tUnitCost as decimal(10,0),\n\t\tLineNumber as integer,\n\t\tCreatedDate as date,\n\t\tUpdatedDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['Southridge/CloudSales/OrderDetails/OrderDetails.csv']) ~> orderdetails\ngenerateGlobalOrderID, orderdetails join(salesorders@OrderID == orderdetails@OrderID,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> mergeOrderandOrderDetails\nsalesorders derive(GlobalOrderID = uuid(),\n\t\tSourceSystemID = 1) ~> generateGlobalOrderID\nmergeOrderandOrderDetails sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\ttruncate: true,\n\tmapColumn(\n\t\tSourceSystemID,\n\t\tGlobalOrderID,\n\t\tSourceSystemOrderID = salesorders@OrderID,\n\t\tCustomerID,\n\t\tOrderDate,\n\t\tShipDate,\n\t\tTotalCost,\n\t\tOrderCreatedDate = salesorders@CreatedDate,\n\t\tOrderUpdatedDate = salesorders@UpdatedDate,\n\t\tOrderDetailID,\n\t\tMovieID,\n\t\tQuantity,\n\t\tUnitCost,\n\t\tLineNumber,\n\t\tOrderDetailCreatedDate = orderdetails@CreatedDate,\n\t\tOrderDetailUpdatedDate = orderdetails@UpdatedDate\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> salesparquet"
+		}
+	}
+}

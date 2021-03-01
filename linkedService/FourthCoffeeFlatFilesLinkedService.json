@@ -1,0 +1,17 @@
+{
+	"name": "FourthCoffeeFlatFilesLinkedService",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "C:\\",
+			"userId": "openhackadmin",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJmNzliY2RiNy1jYWY3LTQ5NzYtYTNiMy0xM2ZiMTM3NjhkOGIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntimeFlatFileSelfhost",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

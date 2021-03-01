@@ -1,0 +1,20 @@
+{
+	"name": "TransformationLayer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DataLake",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Customers",
+				"fileSystem": "transformeddata"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

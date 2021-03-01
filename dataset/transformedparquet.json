@@ -1,0 +1,20 @@
+{
+	"name": "transformedparquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DataLake",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "salesorders",
+				"fileSystem": "transformeddata"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

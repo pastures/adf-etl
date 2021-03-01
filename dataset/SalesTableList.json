@@ -1,0 +1,13 @@
+{
+	"name": "SalesTableList",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "dvdsales",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

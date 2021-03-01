@@ -1,0 +1,45 @@
+{
+	"name": "dataflow2_rentals",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "IngestionTarget",
+						"type": "DatasetReference"
+					},
+					"name": "sourcefourthcoffee"
+				},
+				{
+					"dataset": {
+						"referenceName": "IngestionTarget",
+						"type": "DatasetReference"
+					},
+					"name": "vanarsdel"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ParquetRentals",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "fourthcoffeederived"
+				},
+				{
+					"name": "vanarsdelderived"
+				},
+				{
+					"name": "Union1"
+				}
+			],
+			"script": "source(output(\n\t\tTransactionID as string,\n\t\tCustomerID as string,\n\t\tMovieID as string,\n\t\tRentalDate as integer,\n\t\tReturnDate as integer,\n\t\tRentalCost as decimal(10,0),\n\t\tLateFee as decimal(10,0),\n\t\tRewindFlag as boolean,\n\t\tCreatedDate as date,\n\t\tUpdatedDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['FourthCoffee/Rentals/Transactions.csv']) ~> sourcefourthcoffee\nsource(output(\n\t\tTransactionID as string,\n\t\tCustomerID as string,\n\t\tMovieID as string,\n\t\tRentalDate as integer,\n\t\tReturnDate as integer,\n\t\tRentalCost as decimal(10,0),\n\t\tLateFee as decimal(10,0),\n\t\tRewindFlag as boolean,\n\t\tCreatedDate as date,\n\t\tUpdatedDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['VanArsdelLtd/OnPremRentals/Transactions/Transactions.csv']) ~> vanarsdel\nsourcefourthcoffee derive(SourceSystemId = 2,\n\t\tGlobalTransactionID = uuid(),\n\t\tTransactionID = lower(TransactionID),\n\t\tCustomerID = lower(CustomerID),\n\t\tMovieID = lower(MovieID),\n\t\tRentalDate = toDate(concat(left(toString(RentalDate), 4), '-', substring(toString(RentalDate), 5, 2), '-', substring(toString(RentalDate), 7, 2))),\n\t\tReturnDate = toDate(concat(left(toString(ReturnDate), 4), '-', substring(toString(ReturnDate), 5, 2), '-', substring(toString(ReturnDate), 7, 2)))) ~> fourthcoffeederived\nvanarsdel derive(SourceSystemId = 3,\n\t\tGlobalTransactionID = uuid(),\n\t\tRentalDate = toDate(concat(left(toString(RentalDate), 4), '-', substring(toString(RentalDate), 5, 2), '-', substring(toString(RentalDate), 7, 2))),\n\t\tReturnDate = toDate(concat(left(toString(ReturnDate), 4), '-', substring(toString(ReturnDate), 5, 2), '-', substring(toString(ReturnDate), 7, 2)))) ~> vanarsdelderived\nfourthcoffeederived, vanarsdelderived union(byName: true)~> Union1\nUnion1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\ttruncate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"name": "StreamingTableList",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "StreamingData",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

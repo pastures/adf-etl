@@ -1,0 +1,20 @@
+{
+	"name": "ParquetRentals",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DataLake",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "rentals",
+				"fileSystem": "transformeddata"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

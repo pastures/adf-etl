@@ -1,0 +1,23 @@
+{
+	"name": "movies",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MovieCatalog",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"collection": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "CosmosDbSqlApiCollection",
+		"typeProperties": {
+			"collectionName": {
+				"value": "@dataset().collection",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

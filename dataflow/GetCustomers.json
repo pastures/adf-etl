@@ -1,0 +1,127 @@
+{
+	"name": "GetCustomers",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DataLakeCustomers",
+						"type": "DatasetReference"
+					},
+					"name": "GetSouthridgeSalesCustomers"
+				},
+				{
+					"dataset": {
+						"referenceName": "DataLakeCustomers",
+						"type": "DatasetReference"
+					},
+					"name": "GetFourthCoffeeCustomers"
+				},
+				{
+					"dataset": {
+						"referenceName": "DataLakeCustomers",
+						"type": "DatasetReference"
+					},
+					"name": "GetVanArsdelLtdCustomers"
+				},
+				{
+					"dataset": {
+						"referenceName": "DataLakeCustomers",
+						"type": "DatasetReference"
+					},
+					"name": "GetSouthridgeStreamingCustomers"
+				},
+				{
+					"dataset": {
+						"referenceName": "DataLakeCustomers",
+						"type": "DatasetReference"
+					},
+					"name": "GetAddressesSalesData"
+				},
+				{
+					"dataset": {
+						"referenceName": "DataLakeCustomers",
+						"type": "DatasetReference"
+					},
+					"name": "GetAddressesStreamingData"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "TransformationLayer",
+						"type": "DatasetReference"
+					},
+					"name": "LoadECustomers"
+				}
+			],
+			"transformations": [
+				{
+					"name": "CreateColumnsSouthridgeSales"
+				},
+				{
+					"name": "CreateColumnsFourthSales"
+				},
+				{
+					"name": "CreateColumnsVanArsdellSales"
+				},
+				{
+					"name": "CreateColumnsSouthridgeStreaming"
+				},
+				{
+					"name": "GetMaxCreatedDateSales"
+				},
+				{
+					"name": "GetMaxCreatedDateStreaming"
+				},
+				{
+					"name": "GetMaxSalesCreatedDate"
+				},
+				{
+					"name": "MaxCreatedDateSales"
+				},
+				{
+					"name": "FilterDownDataSales"
+				},
+				{
+					"name": "GetMaxStreamingCreatedDate"
+				},
+				{
+					"name": "MaxCreatedDateStreaming"
+				},
+				{
+					"name": "FilterDownDataStreaming"
+				},
+				{
+					"name": "UnionSouthridgeSalesandFourth"
+				},
+				{
+					"name": "CleanRequiredSalesColumns"
+				},
+				{
+					"name": "GetCustomerSalesAddresses"
+				},
+				{
+					"name": "InsertData"
+				},
+				{
+					"name": "CleanRequiredStreamingColumns"
+				},
+				{
+					"name": "GetCustomerStreamingAddresses"
+				},
+				{
+					"name": "UnionStreamingData"
+				},
+				{
+					"name": "UnionVanArsdelLtd"
+				},
+				{
+					"name": "CustomerSkey"
+				}
+			],
+			"script": "source(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tPhoneNumber as long,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['Southridge/CloudSales/Customers']) ~> GetSouthridgeSalesCustomers\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as integer,\n\t\tPhoneNumber as long,\n\t\tCreatedDate as date,\n\t\tUpdatedDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['FourthCoffee/Rentals/Customers']) ~> GetFourthCoffeeCustomers\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['VanArsdelLtd/OnPremRentals/Customers']) ~> GetVanArsdelLtdCustomers\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tPhoneNumber as long,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['Southridge/CloudStreaming/Customers']) ~> GetSouthridgeStreamingCustomers\nsource(output(\n\t\tAddressID as string,\n\t\tCustomerID as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as integer,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['Southridge/CloudSales/Addresses']) ~> GetAddressesSalesData\nsource(output(\n\t\tAddressID as string,\n\t\tCustomerID as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as integer,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['Southridge/CloudStreaming/Addresses']) ~> GetAddressesStreamingData\nGetSouthridgeSalesCustomers derive(SourceSystemId = 1,\n\t\tUpdatedDate = toDate(UpdatedDate),\n\t\tGlobalCustomerID = uuid()) ~> CreateColumnsSouthridgeSales\nGetFourthCoffeeCustomers derive(SourceSystemId = 2,\n\t\tGlobalCustomerID = uuid()) ~> CreateColumnsFourthSales\nGetVanArsdelLtdCustomers derive(SourceSystemId = 3,\n\t\tCreatedDate = toDate(CreatedDate),\n\t\tUpdatedDate = toDate(UpdatedDate),\n\t\tZipCode = toInteger(ZipCode),\n\t\tPhoneNumber = toLong(PhoneNumber),\n\t\tGlobalCustomerID = uuid()) ~> CreateColumnsVanArsdellSales\nGetSouthridgeStreamingCustomers derive(SourceSystemId = 1,\n\t\tUpdatedDate = toDate(UpdatedDate),\n\t\tGlobalCustomerID = uuid()) ~> CreateColumnsSouthridgeStreaming\nGetAddressesSalesData aggregate(groupBy(CustomerID),\n\tAddressCreatedDate = max(CreatedDate)) ~> GetMaxCreatedDateSales\nGetAddressesStreamingData aggregate(groupBy(CustomerID),\n\tAddressesCreatedDate = max(CreatedDate)) ~> GetMaxCreatedDateStreaming\nGetCustomerSalesAddresses, GetMaxCreatedDateSales join(GetSouthridgeSalesCustomers@CustomerID == GetMaxCreatedDateSales@CustomerID,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> GetMaxSalesCreatedDate\nGetMaxSalesCreatedDate derive(MaxCreatedDate = greatest(toDate(CreatedDate),toDate(GetMaxCreatedDateSales@CustomerID))) ~> MaxCreatedDateSales\nMaxCreatedDateSales select(mapColumn(\n\t\tCustomerID = GetSouthridgeSalesCustomers@CustomerID,\n\t\tLastName,\n\t\tFirstName,\n\t\tPhoneNumber,\n\t\tCreatedDate = MaxCreatedDate,\n\t\tUpdatedDate,\n\t\tSourceSystemId,\n\t\tAddressLine1,\n\t\tAddressLine2,\n\t\tCity,\n\t\tState,\n\t\tZipCode,\n\t\tGlobalCustomerID\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: true) ~> FilterDownDataSales\nGetCustomerStreamingAddresses, GetMaxCreatedDateStreaming join(GetSouthridgeStreamingCustomers@CustomerID == GetMaxCreatedDateStreaming@CustomerID,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> GetMaxStreamingCreatedDate\nGetMaxStreamingCreatedDate derive(MaxCreatedDate = greatest(toDate(GetSouthridgeStreamingCustomers@CreatedDate),toDate(GetMaxCreatedDateStreaming@CustomerID))) ~> MaxCreatedDateStreaming\nMaxCreatedDateStreaming select(mapColumn(\n\t\tCustomerID = GetSouthridgeStreamingCustomers@CustomerID,\n\t\tLastName,\n\t\tFirstName,\n\t\tPhoneNumber,\n\t\tCreatedDate = MaxCreatedDate,\n\t\tUpdatedDate = CreateColumnsSouthridgeStreaming@UpdatedDate,\n\t\tSourceSystemId,\n\t\tAddressLine1,\n\t\tAddressLine2,\n\t\tCity,\n\t\tState,\n\t\tZipCode\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: true) ~> FilterDownDataStreaming\nFilterDownDataSales, CreateColumnsFourthSales union(byName: true)~> UnionSouthridgeSalesandFourth\nGetAddressesSalesData select(mapColumn(\n\t\tCustomerID,\n\t\tAddressLine1,\n\t\tAddressLine2,\n\t\tCity,\n\t\tState,\n\t\tZipCode\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: true) ~> CleanRequiredSalesColumns\nCreateColumnsSouthridgeSales, CleanRequiredSalesColumns join(GetSouthridgeSalesCustomers@CustomerID == CleanRequiredSalesColumns@CustomerID,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> GetCustomerSalesAddresses\nUnionVanArsdelLtd alterRow(insertIf(true())) ~> InsertData\nGetAddressesStreamingData select(mapColumn(\n\t\tAddressID,\n\t\tCustomerID,\n\t\tAddressLine1,\n\t\tAddressLine2,\n\t\tCity,\n\t\tState,\n\t\tZipCode,\n\t\tCreatedDate,\n\t\tUpdatedDate\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> CleanRequiredStreamingColumns\nCreateColumnsSouthridgeStreaming, CleanRequiredStreamingColumns join(GetSouthridgeStreamingCustomers@CustomerID == CleanRequiredStreamingColumns@CustomerID,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> GetCustomerStreamingAddresses\nUnionSouthridgeSalesandFourth, FilterDownDataStreaming union(byName: true)~> UnionStreamingData\nUnionStreamingData, CreateColumnsVanArsdellSales union(byName: true)~> UnionVanArsdelLtd\nInsertData keyGenerate(output(CustomerSkey as long),\n\tstartAt: 1L) ~> CustomerSkey\nCustomerSkey sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tmapColumn(\n\t\tCustomerID,\n\t\tLastName,\n\t\tFirstName,\n\t\tPhoneNumber,\n\t\tCreatedDate,\n\t\tUpdatedDate,\n\t\tSourceSystemId,\n\t\tAddressLine1,\n\t\tAddressLine2,\n\t\tCity,\n\t\tState,\n\t\tZipCode,\n\t\tGlobalCustomerID,\n\t\tCustomerSkey\n\t),\n\tskipDuplicateMapOutputs: true) ~> LoadECustomers"
+		}
+	}
+}
